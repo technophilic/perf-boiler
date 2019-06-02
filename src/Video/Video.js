@@ -1,5 +1,5 @@
 import './Video.css'
-import AgoraRTC from 'agora-rtc-sdk'
+//import Agora SDK
 
 
 let remoteContainer = document.getElementById("remote");

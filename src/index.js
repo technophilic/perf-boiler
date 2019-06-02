@@ -1,4 +1,4 @@
-import AgoraRTC from 'agora-rtc-sdk'
+//import Agora SDK
 import './index.css'
 
 import Video from './Video/Video'
