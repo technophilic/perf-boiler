@@ -1,5 +1,5 @@
 import './Video.css'
-//import Agora SDK
+import AgoraRTC from 'agora-rtc-sdk'
 
 
 let remoteContainer = document.getElementById("remote");
@@ -60,12 +60,43 @@ let handleFail = function(err){
  * @param client - RTC Client
  * @description Function takes in a client and returns a promise which will resolve {localStream and client}
  */
-export default function video(client) {
+export default function video(client,appid) {
 
     let resolve;
 
-    // Start coding here
+    client.init(appid,function () {
+        console.log("initialized");
+    },handleFail);
 
 
-    return new Promise((res,rej)=>{resolve=res})
+
+    client.join(null,'channel-x',null,(uid)=>{
+        let localStream = AgoraRTC.createStream({
+            streamID:uid,
+            audio:true,
+            video:true,
+            screen:false
+        });
+
+        localStream.init(function () {
+            localStream.play('me');
+            client.publish(localStream,handleFail);
+
+            resolve({localStream,client});
+        },handleFail)
+    },handleFail);
+
+    client.on('stream-added',function (evt) {
+
+        client.subscribe(evt.stream,handleFail)
+    });
+    client.on('stream-subscribed',function(evt){
+        let stream = evt.stream;
+        addVideoStream(stream.getId());
+        stream.play(String(stream.getId()));
+    });
+    client.on('stream-removed',removeVideoStream);
+    client.on('peer-leave',removeVideoStream);
+
+    return new Promise((res,rej)=>{resolve=res});
 }

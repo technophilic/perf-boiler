@@ -1,10 +1,16 @@
-//import Agora SDK
+import AgoraRTC from 'agora-rtc-sdk'
+import Input from './Input/Input'
+import './materialize.min.css'
 import './index.css'
+// import Materialize from 'materialize-css'
 
-import Video from './Video/Video'
-import Controls from './Controls/Controls'
 
 
 let client = AgoraRTC.createClient({mode: 'rtc', codec: "h264"});
 
-Video(client);
+Input().then((appid)=>{
+    Video(client,appid).then(function (value) {   // Value is {localStream,client}
+        Controls(value);
+    });
+});
+init();

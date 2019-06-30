@@ -1,0 +1,30 @@
+{
+  "tree": {
+    "agora-rtc-sdk@2.6.1": {
+      "deps": {},
+      "name": "agora-rtc-sdk",
+      "version": "2.6.1"
+    },
+    "fuse-box-css@0.0.1": {
+      "deps": {},
+      "name": "fuse-box-css",
+      "version": "0.0.1"
+    }
+  },
+  "flat": {
+    "agora-rtc-sdk@2.6.1": {
+      "name": "agora-rtc-sdk",
+      "version": "2.6.1",
+      "files": [
+        "AgoraRTCSDK.min.js"
+      ]
+    },
+    "fuse-box-css@0.0.1": {
+      "name": "fuse-box-css",
+      "version": "0.0.1",
+      "files": [
+        "index.js"
+      ]
+    }
+  }
+}

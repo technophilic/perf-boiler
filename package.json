@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-
+    "agora-rtc-sdk": "^2.6.1",
+    "materialize-css": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "fuse-box": "^3.7.1",
