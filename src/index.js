@@ -1,5 +1,9 @@
 import AgoraRTC from 'agora-rtc-sdk'
 import Input from './Input/Input'
+
+import Video from './Video/Video'
+import Controls from './Controls/Controls'
+
 import './materialize.min.css'
 import './index.css'
 // import Materialize from 'materialize-css'
@@ -13,4 +17,4 @@ Input().then((appid)=>{
         Controls(value);
     });
 });
-init();
+// init();
